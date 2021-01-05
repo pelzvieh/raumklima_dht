@@ -1,0 +1,12 @@
+[Unit]
+Description=A daemon reading temperature and humidity from a connected DHT 22 device
+After=local-fs.target network.target
+[Service]
+ExecStartPre=/usr/bin/pip3 install -U adafruit-circuitpython-dht
+ExecStart=/usr/local/sbin/dht_updated.py
+Type=simple
+Restart=always
+User=pi
+Group=pi
+[Install]
+WantedBy=multi-user.target
