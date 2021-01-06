@@ -17,11 +17,11 @@ while True:
     try:
         success = False
         result = dhtDevice.read()
-        timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+        timestamp = datetime.datetime.now().timestamp()
         success = result['valid']
         if success:
             print(
-                "{{\n    \"temperature\": {temperature_c:.1f},\n    \"humidity\": {humidity},\n    \"timestamp\": \"{timestamp}\"\n}}\n".format(
+                "{{\n    \"temperature\": {temperature_c},\n    \"humidity\": {humidity},\n    \"timestamp\": \"{timestamp}\"\n}}\n".format(
                   temperature_c=result['temp_c'], humidity=result['humidity'], timestamp=timestamp
                 ),
                 file=open('/var/lib/dht_updated/dht.json', 'w')
