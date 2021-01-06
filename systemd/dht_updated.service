@@ -1,8 +1,9 @@
 [Unit]
 Description=A daemon reading temperature and humidity from a connected DHT 22 device
 After=local-fs.target network.target
+Requires=pigpiod.service
 [Service]
-ExecStartPre=/usr/bin/pip3 install -U adafruit-circuitpython-dht
+ExecStartPre=/usr/bin/pip3 install -U pigpio-dht
 ExecStart=/usr/local/sbin/dht_updated.py
 Type=simple
 Restart=always
