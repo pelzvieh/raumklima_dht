@@ -3,8 +3,9 @@ Description=A daemon reading temperature and humidity from a connected DHT 22 de
 After=local-fs.target network.target
 Requires=pigpiod.service
 [Service]
-ExecStartPre=/usr/bin/pip3 install -U pigpio-dht
+ExecStartPre=-/usr/bin/pip3 install -U pigpio-dht
 ExecStart=/usr/local/sbin/dht_updated.py
+TimeoutStartSec=300
 Type=simple
 Restart=always
 User=pi
