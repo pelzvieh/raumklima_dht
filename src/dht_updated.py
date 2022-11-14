@@ -7,7 +7,7 @@ gpio=4
 
 # Initial the dht device, with data pin connected to:
 try:
-    dhtDevice = DHT22(gpio)
+    dhtDevice = DHT22(gpio, timeout_secs=5)
 except RuntimeError as error:
     print("Init failed, aborting to read out: {}".format(error.args[0]))
     sys.exit(1)
@@ -29,10 +29,9 @@ while True:
 
         attempt=1
 
-    except RuntimeError as error:
+    except Exception as error:
         if attempt > 10:
             print("{}: {}".format(attempt, error.args[0]))
         attempt=attempt+1
 
     time.sleep(60.0 if success else 2.0)
-
