@@ -1,3 +1,6 @@
+# Active repository moved
+This project is moved to https://codeberg.org/Flying-Snail/raumklima_dht
+
 # Raumklima_DHT
 
 This is a extremely simple daemon that reads temperature and humidity from a DHT22 sensor using
